@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ratandeep Reddy Allgupally — Mechanical Engineer | CAD, FEA, Prototyping & Simulation">
+  <title>Ratandeep Reddy | Mechanical Engineer Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="loader-gear"></div>
+    <p class="loader-text">INITIALIZING SYSTEMS</p>
+  </div>
+
+  <!-- ===== ENTRY PAGE ===== -->
+  <div id="entry-page">
+    <canvas id="entry-canvas"></canvas>
+    <div class="entry-content">
+      <div class="entry-gear-ring">
+        <svg viewBox="0 0 200 200" class="entry-gear-svg">
+          <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(249,115,22,0.15)" stroke-width="1" stroke-dasharray="4 6"/>
+          <circle cx="100" cy="100" r="60" fill="none" stroke="rgba(6,182,212,0.1)" stroke-width="1" stroke-dasharray="3 5"/>
+        </svg>
+      </div>
+      <p class="entry-tag">PORTFOLIO // 2026</p>
+      <h1 class="entry-name">RATANDEEP <span>REDDY</span></h1>
+      <p class="entry-role">Mechanical Engineer</p>
+      <div class="entry-line"></div>
+      <button id="enter-btn" class="entry-btn">
+        <span class="entry-btn-text">ENTER PORTFOLIO</span>
+        <span class="entry-btn-icon">→</span>
+      </button>
+      <p class="entry-hint">Click or press any key to enter</p>
+    </div>
+  </div>
+
+  <!-- Particles -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo"><img src="profile.jpg" alt="Ratandeep Reddy" class="nav-avatar"> RR.</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="dot"></span>
+          <span class="typing-text" data-text="MECHANICAL ENGINEER • ASU '27"></span>
+        </div>
+        <h1>RATANDEEP<br><span class="gradient-text">REDDY</span></h1>
+        <p class="hero-subtitle">Mechanical Engineer &amp; Researcher</p>
+        <p class="hero-desc">Engineering high-performance mechanical systems through precision CAD design, finite element analysis, and hands-on prototyping at Arizona State University. Passionate about motorsport engineering, aerodynamics, and building solutions that push boundaries.</p>
+
+        <div class="hero-highlights">
+          <span class="highlight-badge">⚙️ SolidWorks</span>
+          <span class="highlight-badge">🔬 ANSYS FEA</span>
+          <span class="highlight-badge">💻 MATLAB</span>
+          <span class="highlight-badge">🔧 Prototyping</span>
+          <span class="highlight-badge">📐 AutoCAD</span>
+          <span class="highlight-badge">🤖 Arduino</span>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-num" data-target="15" data-suffix="+">0</div>
+            <div class="stat-label">Prototypes Built</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" data-target="3" data-suffix=".75">0</div>
+            <div class="stat-label">GPA / 4.00</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" data-target="200" data-suffix="+">0</div>
+            <div class="stat-label">Parts Inspected</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" data-target="25" data-suffix="%">0</div>
+            <div class="stat-label">Cycle Reduction</div>
+          </div>
+        </div>
+
+        <div class="hero-btns">
+          <a href="#projects" class="btn-primary">View Projects</a>
+          <a href="Ratandeep_DE_Resume_furi.pdf" target="_blank" class="btn-outline">📄 View Resume</a>
+          <a href="#contact" class="btn-outline">Get In Touch</a>
+        </div>
+      </div>
+
+      <!-- Right side info card -->
+      <div class="hero-card">
+        <div class="hero-card-header">
+          <img src="profile.jpg" alt="Ratandeep Reddy" class="hero-card-img">
+          <div>
+            <h3>Ratandeep Reddy</h3>
+            <p>Allgupally</p>
+          </div>
+        </div>
+        <div class="hero-card-body">
+          <div class="hero-card-row"><span class="hc-label">🎓 University</span><span class="hc-value">Arizona State University</span></div>
+          <div class="hero-card-row"><span class="hc-label">📍 Location</span><span class="hc-value">Tempe, Arizona</span></div>
+          <div class="hero-card-row"><span class="hc-label">🎯 Focus</span><span class="hc-value">Mechanical Engineering</span></div>
+          <div class="hero-card-row"><span class="hc-label">🔬 Role</span><span class="hc-value">Research Assistant</span></div>
+          <div class="hero-card-row"><span class="hc-label">📅 Graduating</span><span class="hc-value">May 2027</span></div>
+        </div>
+        <div class="hero-card-footer">
+          <a href="https://www.linkedin.com/in/a-ratandeep-reddy-1a777b322/" target="_blank" class="hc-social">🔗 LinkedIn</a>
+          <a href="mailto:ratandeep569@gmail.com" class="hc-social">📧 Email</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gear SVG Background -->
+    <div class="gear-container" aria-hidden="true">
+      <svg viewBox="0 0 400 400">
+        <g class="gear-outer" transform="translate(200,200)">
+          <path d="M0,-160 L12,-145 L18,-148 L22,-165 L30,-164 L32,-147 L40,-143 L50,-158 L56,-154 L50,-138 L58,-132 L72,-144 L78,-138 L66,-124 L72,-116 L88,-124 L92,-116 L78,-106 L82,-96 L100,-100 L102,-90 L86,-84 L88,-72 L106,-70 L106,-60 L88,-58 L86,-46 L104,-38 L100,-28 L84,-32 L78,-20 L94,-8 L88,0 L72,-8 L64,2 L76,18 L68,24 L56,12 L46,20 L54,38 L44,42 L36,26 L24,32 L28,50 L18,52 L14,34 L2,36 L2,56 L-8,54 L-8,36 L-20,32 L-24,50 L-34,46 L-26,28 L-36,20 L-48,36 L-56,28 L-44,14 L-52,4 L-68,14 L-74,6 L-58,-6 L-62,-18 L-80,-14 L-82,-24 L-64,-30 L-66,-42 L-84,-42 L-84,-52 L-66,-54 L-64,-66 L-82,-72 L-78,-82 L-60,-78 L-54,-88 L-70,-100 L-62,-108 L-48,-94 L-40,-102 L-50,-120 L-42,-126 L-32,-108 L-22,-114 L-28,-134 L-18,-136 L-12,-118 L0,-120 Z" fill="none" stroke="#f97316" stroke-width="0.8"/>
+        </g>
+        <g class="gear-inner" transform="translate(200,200)">
+          <path d="M0,-80 L8,-72 L12,-78 L14,-90 L20,-88 L20,-76 L28,-70 L36,-80 L40,-74 L34,-64 L40,-56 L52,-60 L54,-52 L42,-48 L44,-38 L56,-34 L54,-24 L42,-26 L38,-16 L48,-6 L42,0 L32,-6 L24,2 L30,14 L22,18 L16,8 L8,12 L8,26 L0,26 L-2,12 L-10,10 L-18,22 L-24,16 L-16,6 L-22,-2 L-34,4 L-38,-4 L-26,-12 L-28,-22 L-42,-20 L-42,-30 L-28,-32 L-26,-42 L-38,-50 L-32,-56 L-22,-46 L-14,-52 L-20,-66 L-12,-68 L-8,-56 L0,-54 Z" fill="none" stroke="#06b6d4" stroke-width="0.8"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about">
+    <div class="section-header reveal">
+      <p class="section-tag">// Who I Am</p>
+      <h2 class="section-title">About Me</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I'm a Mechanical Engineering student at <strong>Arizona State University</strong> with a passion for designing, building, and testing high-performance mechanical systems. My work spans CAD modeling, structural analysis, rapid prototyping, and embedded systems development.</p>
+        <p>From optimizing manufacturing workflows that improved efficiency by 20%, to building 15+ functional prototypes with measurable reliability gains, I bring a data-driven approach to every engineering challenge. Currently conducting undergraduate research on experimental mechanical systems and sensor technologies.</p>
+        <div class="about-details">
+          <div class="detail-item">
+            <div class="label">Location</div>
+            <div class="value">Tempe, AZ</div>
+          </div>
+          <div class="detail-item">
+            <div class="label">University</div>
+            <div class="value">ASU Fulton</div>
+          </div>
+          <div class="detail-item">
+            <div class="label">Degree</div>
+            <div class="value">B.S.E. Mechanical</div>
+          </div>
+          <div class="detail-item">
+            <div class="label">Graduation</div>
+            <div class="value">May 2027</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual reveal">
+        <div class="blueprint-card">
+          <canvas id="blueprint-canvas" width="360" height="360"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills">
+    <div class="section-header reveal">
+      <p class="section-tag">// Technical Arsenal</p>
+      <h2 class="section-title">Skills &amp; Tools</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-icon">⚙️</div>
+        <h3>Engineering &amp; Analysis</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">SolidWorks</span>
+          <span class="skill-tag">AutoCAD</span>
+          <span class="skill-tag">ANSYS FEA</span>
+          <span class="skill-tag">MATLAB</span>
+          <span class="skill-tag">Excel</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">💻</div>
+        <h3>Programming &amp; Systems</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">C/C++</span>
+          <span class="skill-tag">MATLAB</span>
+          <span class="skill-tag">Arduino</span>
+          <span class="skill-tag">Embedded C</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🔧</div>
+        <h3>Engineering Methods</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Root Cause Analysis</span>
+          <span class="skill-tag">DFM</span>
+          <span class="skill-tag">GD&amp;T</span>
+          <span class="skill-tag">Tolerance Analysis</span>
+          <span class="skill-tag">Quality Inspection</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🏭</div>
+        <h3>Fabrication &amp; Testing</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">3D Printing (FDM)</span>
+          <span class="skill-tag">Load Testing</span>
+          <span class="skill-tag">Stress Validation</span>
+          <span class="skill-tag">Prototyping</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section id="experience">
+    <div class="section-header reveal">
+      <p class="section-tag">// Career Path</p>
+      <h2 class="section-title">Experience</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">August 2025 — Present</div>
+          <h3>Undergraduate Research Assistant</h3>
+          <h4>Arizona State University</h4>
+          <ul>
+            <li>Designed and built functional prototypes for experimental validation of mechanical systems</li>
+            <li>Developed experimental setups and integrated instrumentation for mechanical testing</li>
+            <li>Improved manufacturing workflow efficiency by 20% through bottleneck identification</li>
+            <li>Conducted quality inspections on 200+ components, reducing waste by 12%</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">May 2025 — August 2025</div>
+          <h3>Mechanical Engineering Intern</h3>
+          <h4>Sreenex Machine Private Limited, Hyderabad</h4>
+          <ul>
+            <li>Designed and optimized 3D CAD models, reducing design-revision cycles by 25%</li>
+            <li>Built and evaluated 15+ mechanical prototypes; improved reliability by 30%</li>
+            <li>Conducted load testing, stress validation, and dimensional inspections — reducing defect rates by 18%</li>
+            <li>Created GD&amp;T drawings and BOMs, accelerating approvals by 20%</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">November 2024 — August 2025</div>
+          <h3>Technology Consultant</h3>
+          <h4>Arizona State University</h4>
+          <ul>
+            <li>Diagnosed and resolved hardware and software issues in a fast-paced environment</li>
+            <li>Assisted with CAD modeling and simulations using SolidWorks, AutoCAD, and ANSYS</li>
+            <li>Supported projects involving process optimization, digital manufacturing, and IoT integration</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects">
+    <div class="section-header reveal">
+      <p class="section-tag">// Built to Perform</p>
+      <h2 class="section-title">Projects</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="project-banner">
+          <span class="project-icon">🏎️</span>
+        </div>
+        <div class="project-body">
+          <h3>Aerodynamic Active RC Car</h3>
+          <p>High-performance RC car powered by a brushless drone motor with SolidWorks chassis design, Arduino control logic, and ANSYS aerodynamic simulations to optimize downforce and reduce drag.</p>
+          <div class="project-tech">
+            <span>SolidWorks</span>
+            <span>Arduino</span>
+            <span>ANSYS</span>
+            <span>CFD</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-banner">
+          <span class="project-icon">🌊</span>
+        </div>
+        <div class="project-body">
+          <h3>Seal-Whisker Shaped Sensors</h3>
+          <p>Volunteer research at ASU — designed a Doppler-effect experimental setup, recorded acoustic data, and analyzed frequency patterns using Logger Pro and Excel for dynamic object detection.</p>
+          <div class="project-tech">
+            <span>Logger Pro</span>
+            <span>Excel</span>
+            <span>Signal Analysis</span>
+            <span>Research</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-banner">
+          <span class="project-icon">💧</span>
+        </div>
+        <div class="project-body">
+          <h3>Water Tank Outlet Radius Simulation</h3>
+          <p>MATLAB simulation of a gravity-dependent tank system integrating DFT-modeled g(t), RK4 ODE solving, spline interpolation, and Simpson's rule with bisection root-solving calibration.</p>
+          <div class="project-tech">
+            <span>MATLAB</span>
+            <span>DFT</span>
+            <span>RK4</span>
+            <span>Numerical Methods</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-banner">
+          <span class="project-icon">☀️</span>
+        </div>
+        <div class="project-body">
+          <h3>Solar Flipping Mechanism</h3>
+          <p>Engineered a non-electrical, weight-powered solar panel flipping mechanism using torque and rotational dynamics, with iterative gear design prototyping for energy-efficient rotation.</p>
+          <div class="project-tech">
+            <span>Mechanical Design</span>
+            <span>Gear Systems</span>
+            <span>Prototyping</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-banner">
+          <span class="project-icon">🌱</span>
+        </div>
+        <div class="project-body">
+          <h3>Automated Irrigation System</h3>
+          <p>Arduino-based automated irrigation using soil moisture sensors and servo-controlled valves. SolidWorks enclosure design with reliability testing for consistent long-term performance.</p>
+          <div class="project-tech">
+            <span>Arduino</span>
+            <span>SolidWorks</span>
+            <span>IoT</span>
+            <span>Sensors</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EDUCATION ===== -->
+  <section id="education">
+    <div class="section-header reveal">
+      <p class="section-tag">// Academic Foundation</p>
+      <h2 class="section-title">Education</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="edu-card reveal">
+      <h3>Arizona State University</h3>
+      <p class="edu-degree">Bachelor of Science in Engineering (B.S.E) — Mechanical Engineering</p>
+      <p class="edu-date">August 2023 — May 2027 • Tempe, Arizona</p>
+      <div class="edu-gpa">GPA: 3.75 / 4.00</div>
+      <div class="coursework">
+        <span>Thermodynamics</span>
+        <span>Fluid Mechanics</span>
+        <span>Mechanics of Materials</span>
+        <span>Manufacturing Processes</span>
+        <span>Mechatronics</span>
+        <span>Dynamic Systems & Controls</span>
+        <span>Signals & Systems</span>
+        <span>Engineering Statistics</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact">
+    <div class="section-header reveal">
+      <p class="section-tag">// Let's Connect</p>
+      <h2 class="section-title">Contact</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <div class="contact-icon">📧</div>
+        <h4>Email</h4>
+        <a href="mailto:ratandeep569@gmail.com">ratandeep569@gmail.com</a>
+      </div>
+      <div class="contact-card reveal">
+        <div class="contact-icon">🔗</div>
+        <h4>LinkedIn</h4>
+        <a href="https://www.linkedin.com/in/a-ratandeep-reddy-1a777b322/" target="_blank">A RatanDeep Reddy</a>
+      </div>
+      <div class="contact-card reveal">
+        <div class="contact-icon">📞</div>
+        <h4>Phone</h4>
+        <p>(602) 577-2602</p>
+      </div>
+      <div class="contact-card reveal">
+        <div class="contact-icon">📍</div>
+        <h4>Location</h4>
+        <p>Tempe, Arizona</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Ratandeep Reddy Allgupally. Engineered with precision.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
