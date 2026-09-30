@@ -61,10 +61,9 @@ export default function Hero() {
                 fill
                 priority
                 sizes="(max-width: 1024px) 70vw, 30vw"
-                className="object-cover grayscale contrast-110"
+                className="object-cover"
               />
             </motion.div>
-            <div className="absolute inset-0 bg-blue mix-blend-screen opacity-25" aria-hidden />
           </div>
           <p className="label absolute -left-3 top-6 -rotate-3 bg-paper px-3 py-2 shadow-sm md:-left-10">Based in {site.location}</p>
           <p className="label absolute -right-2 bottom-24 rotate-2 bg-blue px-3 py-2 text-light">{site.availability}</p>
