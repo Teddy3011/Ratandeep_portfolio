@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f2f0e9;
+  --color-ink: #101010;
+  --color-muted: #5b5b57;
+  --color-blue: #2457ff;
+  --color-red: #ff3d2e;
+  --color-night: #0c0c0c;
+  --color-light: #f6f4ed;
+  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+}
+
+html {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+
+body { overflow-x: hidden; }
+
+::selection { background: var(--color-blue); color: var(--color-light); }
+
+:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 3px;
+}
+
+/* Paper grain over everything; pointer-events none so it never blocks clicks. */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Technical grid lines used behind sections. */
+.grid-lines {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, currentColor 8%, transparent) 1px, transparent 1px);
+  background-size: calc(100% / 12) 100%;
+}
+
+/* Marquee: pure CSS, pauses on hover, stops for reduced motion. */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* Custom cursor only exists on precise pointers. */
+@media (pointer: fine) {
+  .has-cursor, .has-cursor a, .has-cursor button { cursor: none; }
+}
+
+/* Safety net: the preloader is server-rendered, so hide it even if JS never runs. */
+.preloader { animation: preloader-failsafe 0s 2.5s forwards; }
+@keyframes preloader-failsafe { to { visibility: hidden; } }
+
+.scribble { font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
