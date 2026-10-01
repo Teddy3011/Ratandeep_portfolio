@@ -120,7 +120,12 @@ export function Footer() {
             </li>
           ))}
         </ul>
-        <p className="label text-light/60">Designed &amp; built by {site.name.split(" ")[0]} · Still iterating.</p>
+        <p className="label text-light/60">
+          Designed &amp; built by {site.name.split(" ")[0]} · Still iterating. · Music button by{" "}
+          <a href="https://skiper-ui.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue">
+            Skiper UI
+          </a>
+        </p>
         <a href="#top" className="label justify-self-start hover:text-blue md:justify-self-end">
           Back to top ↑
         </a>

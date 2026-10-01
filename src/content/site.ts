@@ -248,3 +248,14 @@ export const contact = {
   cta: "DROP ME A LINE — I READ EVERYTHING",
   closing: "Thanks for scrolling to the very end. Hope the rest of your day runs within tolerance.",
 };
+
+// The floating radio. Each track is a "station" on the dial (frequency 88.0–108.0).
+// Only add songs you have the rights to publish: files in /public are downloadable by anyone.
+export const radio = {
+  name: "RR FM",
+  tagline: "Shop-floor radio",
+  autoplay: true, // starts when the site opens (or on the first click/tap if the browser blocks sound)
+  stations: [
+    { freq: 98.7, title: "Nazar", artist: "DARZI", src: "/audio/nazar.mp3" },
+  ],
+};

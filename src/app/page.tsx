@@ -1,5 +1,6 @@
 import { Cursor, MotionProvider, Preloader, ScrollProgress, SmoothScroll } from "@/components/Chrome";
 import Nav from "@/components/Nav";
+import Radio from "@/components/Radio";
 import Hero from "@/components/Hero";
 import { Metrics, Philosophy, Statement } from "@/components/Story";
 import { Experience, Timeline } from "@/components/Journey";
@@ -13,6 +14,7 @@ export default function Home() {
       <Preloader />
       <Cursor />
       <ScrollProgress />
+      <Radio />
       <a href="#about" className="label sr-only z-[90] bg-blue p-3 text-light focus:not-sr-only focus:fixed focus:left-3 focus:top-3">
         Skip to content
       </a>
