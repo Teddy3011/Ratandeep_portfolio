@@ -249,13 +249,20 @@ export const contact = {
   closing: "Thanks for scrolling to the very end. Hope the rest of your day runs within tolerance.",
 };
 
-// The floating radio. Each track is a "station" on the dial (frequency 88.0–108.0).
-// Only add songs you have the rights to publish: files in /public are downloadable by anyone.
+// The floating radio. Each station is a Spotify track (the ID from its open.spotify.com/track/<ID> link),
+// placed on the dial at a frequency between 88.0 and 108.0. Visitors not logged in to Spotify hear 30-second previews.
 export const radio = {
   name: "RR FM",
-  tagline: "Shop-floor radio",
-  autoplay: true, // starts when the site opens (or on the first click/tap if the browser blocks sound)
+  tagline: "via Spotify",
   stations: [
-    { freq: 98.7, title: "Nazar", artist: "DARZI", src: "/audio/nazar.mp3" },
+    { freq: 88.7, title: "Nazar", artist: "Darzi", spotify: "35LRDedmdcVBcZp5b4VSXG" },
+    { freq: 90.9, title: "52 Bars", artist: "Karan Aujla, Ikky", spotify: "6rFckZb1cuJYzsZiGHgqks" },
+    { freq: 93.1, title: "Loser", artist: "Tame Impala", spotify: "3dRRam4ZHVYRefzJA79cns" },
+    { freq: 95.3, title: "I Don't Miss That Life", artist: "Seedhe Maut", spotify: "6tBiXnvflFCcEQAbQAdKkf" },
+    { freq: 97.5, title: "11K", artist: "Seedhe Maut", spotify: "2qFZHvoVTcyQtDZKA7J1BK" },
+    { freq: 99.7, title: "Natkhat", artist: "Seedhe Maut", spotify: "5wfAOhET7HtNKI1rf4l7GE" },
+    { freq: 101.9, title: "Hangova", artist: "Anirudh Ravichander, Heisenberg", spotify: "2MvEcJxJAxCr31kA5wHwve" },
+    { freq: 104.1, title: "Dekha Hi Nahi", artist: "Osho Jain", spotify: "5zK7gzWMZlT4TUf2iN2Wjw" },
+    { freq: 106.3, title: "Sharmeeli", artist: "Frappe Ash, toorjo dey", spotify: "1zaDxoxv6CjrS9sLarRs8a" },
   ],
 };
