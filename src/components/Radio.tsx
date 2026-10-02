@@ -3,7 +3,7 @@
 /**
  * Floating retro radio: a waveform button in the corner that opens a dial-style player.
  * Stations are Spotify tracks (site.ts), played through Spotify's official embed + iFrame API,
- * so no audio files are hosted here. Spotify's script loads the first time the radio is opened.
+ * so no audio files are hosted here. Starts on load (or first interaction) and auto-advances.
  * Waveform button adapted from Skiper UI "Skiper 25 Micro Interactions_005" by @gurvinder-singh02
  * (https://gxuri.me) — attribution required (credited in the footer).
  */
@@ -75,12 +75,17 @@ export default function Radio() {
   indexRef.current = index;
   const station = stations[index];
 
-  // Load Spotify's iFrame API the first time the radio opens. Spotify replaces the element it is
+  const lastProgress = useRef(0); // time the track position last moved forward
+  const lastPosition = useRef(0);
+  const endTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
+
+  // Load Spotify's iFrame API as soon as the site opens. Spotify replaces the element it is
   // given with its iframe, so hand it a node React doesn't manage.
   useEffect(() => {
-    if (!open || controller.current || !host.current || host.current.childElementCount) return;
+    if (controller.current || !host.current || host.current.childElementCount) return;
     const mount = document.createElement("div");
     host.current.appendChild(mount);
+    playWhenReady.current = radio.autoplay;
 
     window.onSpotifyIframeApiReady = (api) => {
       api.createController(mount, { uri: uri(stations[indexRef.current].spotify), width: "100%", height: 80 }, (c) => {
@@ -94,8 +99,16 @@ export default function Radio() {
         });
         c.addListener("playback_update", ({ data }) => {
           setPlaying(!data.isPaused);
-          // Like a radio: when a track finishes, move to the next station.
-          if (!data.isPaused && data.duration > 0 && data.position >= data.duration - 400) tune(indexRef.current + 1);
+          if (data.position > lastPosition.current) lastProgress.current = Date.now();
+          lastPosition.current = data.position;
+          // Like a radio: when a song (or its preview, often 15–30s) ends, tune to the next station.
+          // Spotify doesn't reliably report the end, so near the end schedule the switch ourselves;
+          // any later update (pause, seek, new track) reschedules or cancels it.
+          clearTimeout(endTimer.current);
+          const left = data.duration - data.position;
+          if (!data.isPaused && data.duration > 0 && left < 3000) {
+            endTimer.current = setTimeout(() => tune(indexRef.current + 1), left + 600);
+          }
         });
       });
     };
@@ -103,7 +116,25 @@ export default function Radio() {
     script.src = "https://open.spotify.com/embed/iframe-api/v1";
     script.async = true;
     document.body.appendChild(script);
-  }, [open]);
+  }, []);
+
+  // Browsers block sound until the visitor interacts, so if autoplay was refused, start on the
+  // first click / tap / key press anywhere (clicks inside the radio panel work as normal controls).
+  useEffect(() => {
+    if (!radio.autoplay) return;
+    const events = ["pointerdown", "keydown", "touchstart"] as const;
+    const stop = () => events.forEach((e) => window.removeEventListener(e, start));
+    function start(e: Event) {
+      if ((e.target as Element | null)?.closest?.("#radio-panel")) return stop();
+      stop();
+      // Skip only if the track is genuinely moving; a blocked autoplay can report "playing" at 0:00.
+      if (Date.now() - lastProgress.current < 2000) return;
+      if (controller.current) controller.current.play();
+      else playWhenReady.current = true;
+    }
+    events.forEach((e) => window.addEventListener(e, start));
+    return stop;
+  }, []);
 
   useEffect(() => {
     if (!open) return;

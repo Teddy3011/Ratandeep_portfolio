@@ -254,6 +254,7 @@ export const contact = {
 export const radio = {
   name: "RR FM",
   tagline: "via Spotify",
+  autoplay: true, // start when the site opens (or on the first click/tap/key press if the browser blocks sound)
   stations: [
     { freq: 88.7, title: "Nazar", artist: "Darzi", spotify: "35LRDedmdcVBcZp5b4VSXG" },
     { freq: 90.9, title: "52 Bars", artist: "Karan Aujla, Ikky", spotify: "6rFckZb1cuJYzsZiGHgqks" },
