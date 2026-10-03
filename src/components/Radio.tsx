@@ -102,12 +102,12 @@ export default function Radio() {
           if (data.position > lastPosition.current) lastProgress.current = Date.now();
           lastPosition.current = data.position;
           // Like a radio: when a song (or its preview, often 15–30s) ends, tune to the next station.
-          // Spotify doesn't reliably report the end, so near the end schedule the switch ourselves;
-          // any later update (pause, seek, new track) reschedules or cancels it.
+          // Spotify doesn't reliably report the end, and its updates can stop (e.g. background tab),
+          // so every update schedules the switch for when the track should finish; a later update
+          // (pause, seek, new track) reschedules or cancels it.
           clearTimeout(endTimer.current);
-          const left = data.duration - data.position;
-          if (!data.isPaused && data.duration > 0 && left < 3000) {
-            endTimer.current = setTimeout(() => tune(indexRef.current + 1), left + 600);
+          if (!data.isPaused && data.duration > 0 && data.position > 0) {
+            endTimer.current = setTimeout(() => tune(indexRef.current + 1), data.duration - data.position + 800);
           }
         });
       });
