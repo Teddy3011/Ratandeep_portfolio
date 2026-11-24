@@ -2,7 +2,7 @@ import { Cursor, MotionProvider, Preloader, ScrollProgress, SmoothScroll } from 
 import Nav from "@/components/Nav";
 import Radio from "@/components/Radio";
 import Hero from "@/components/Hero";
-import { Metrics, Philosophy, Statement } from "@/components/Story";
+import { Metrics, Philosophy, Statement, Toolkit } from "@/components/Story";
 import { Experience, Timeline } from "@/components/Journey";
 import { CaseStudy, Lab, Projects } from "@/components/Work";
 import { Contact, Footer, Marquee } from "@/components/Contact";
@@ -23,6 +23,7 @@ export default function Home() {
         <Hero />
         <Statement />
         <Metrics />
+        <Toolkit />
         <Philosophy />
         <Experience />
         <Marquee />

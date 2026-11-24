@@ -13,7 +13,7 @@ export function Experience() {
     <section aria-labelledby="exp-title" className="px-4 py-28 md:px-8 md:py-36">
       <div className="mx-auto grid max-w-[1400px] grid-cols-12 gap-4">
         <div className="col-span-12 md:col-span-4">
-          <SectionLabel n="04">Experience</SectionLabel>
+          <SectionLabel n="05">Experience</SectionLabel>
           <h2 id="exp-title" className="mt-6 font-display text-[clamp(2.4rem,5vw,4.5rem)] font-bold leading-[0.9] tracking-[-0.04em] md:sticky md:top-28">
             PLACES I'VE GOT MY HANDS DIRTY.
           </h2>
@@ -87,7 +87,7 @@ export function Timeline() {
   return (
     <section id="timeline" aria-labelledby="timeline-title" className="bg-[#e9e6dc] px-4 py-28 md:px-8 md:py-36">
       <div className="mx-auto max-w-[1400px]">
-        <SectionLabel n="05">Timeline</SectionLabel>
+        <SectionLabel n="06">Timeline</SectionLabel>
         <AnimatedHeadline
           lines={["AN HONEST TIMELINE OF", "FIGURING THINGS OUT."]}
           className="mt-6 max-w-5xl font-display text-[clamp(2.2rem,5.5vw,5rem)] font-bold leading-[0.92] tracking-[-0.04em]"

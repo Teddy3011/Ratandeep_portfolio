@@ -49,7 +49,7 @@ export function Contact() {
   return (
     <section id="contact" aria-labelledby="contact-title" className="bg-night px-4 pb-16 pt-28 text-light md:px-8 md:pt-36">
       <div className="mx-auto max-w-[1400px]">
-        <SectionLabel n="09">Contact</SectionLabel>
+        <SectionLabel n="10">Contact</SectionLabel>
         <AnimatedHeadline
           lines={contact.headline}
           className="mt-6 font-display text-[clamp(3.2rem,12vw,12rem)] font-bold leading-[0.85] tracking-[-0.055em]"

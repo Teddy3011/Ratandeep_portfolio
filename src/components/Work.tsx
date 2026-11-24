@@ -21,7 +21,7 @@ export function Projects() {
       <div className="mx-auto max-w-[1400px]">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <SectionLabel n="06">Projects</SectionLabel>
+            <SectionLabel n="07">Projects</SectionLabel>
             <AnimatedHeadline
               lines={["A FEW THINGS THAT", "ESCAPED THE CAD FILE."]}
               className="mt-6 font-display text-[clamp(2.4rem,6vw,5.5rem)] font-bold leading-[0.9] tracking-[-0.04em]"
@@ -52,6 +52,26 @@ export function Projects() {
                 </div>
                 <p className="label mt-2 text-blue">{p.category}</p>
                 <p className="mt-2 max-w-md text-muted">{p.outcome}</p>
+                {p.stats && (
+                  <dl className="mt-5 grid grid-cols-3 gap-3 border-t border-ink/20 pt-4">
+                    {p.stats.map((st) => (
+                      <div key={st.label}>
+                        <dd className="font-display text-2xl font-bold tracking-tight text-blue md:text-3xl">{st.value}</dd>
+                        <dt className="label mt-1 text-[0.6rem] text-muted">{st.label}</dt>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+                {p.bullets && (
+                  <ul className="mt-4 space-y-1.5 text-sm text-muted">
+                    {p.bullets.map((b) => (
+                      <li key={b} className="flex gap-2">
+                        <span className="text-blue" aria-hidden>→</span>
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </>
             );
             return (
@@ -94,27 +114,82 @@ function Board({ lines }: { lines: string[] }) {
   );
 }
 
-/** Race-track style route map: stations are the build phases. */
+/**
+ * Original circuit map in the shape of Monza (layout traced by hand, not the F1 artwork).
+ * Turns are the build phases; sectors are design / simulate / build & test.
+ */
+const SECTORS = [
+  { color: "#ff3d2e", label: "SECTOR 1 · DESIGN", at: [300, 535], d: "M 870 488 L 470 490 Q 448 470 440 476 Q 330 505 250 480 Q 200 455 190 380 L 182 270" },
+  { color: "#2457ff", label: "SECTOR 2 · SIMULATE", at: [215, 300], d: "M 182 270 Q 180 225 170 215 L 160 212 Q 150 210 140 180 L 120 120 Q 105 70 140 55 L 225 42 Q 240 40 250 60 L 505 340" },
+  { color: "#ffb400", label: "SECTOR 3 · BUILD & TEST", at: [690, 356], d: "M 505 340 Q 520 360 545 352 Q 570 345 580 365 Q 590 385 610 382 L 995 386 Q 1020 390 1015 430 Q 1012 480 960 485 L 870 488" },
+];
+// Turn markers in racing order, with where each label sits.
+const TURNS: { at: [number, number]; label: [number, number]; anchor: "start" | "middle" | "end" }[] = [
+  { at: [445, 482], label: [445, 455], anchor: "middle" },
+  { at: [245, 478], label: [210, 525], anchor: "end" },
+  { at: [172, 214], label: [200, 205], anchor: "start" },
+  { at: [130, 60], label: [118, 32], anchor: "middle" },
+  { at: [545, 352], label: [590, 330], anchor: "start" },
+  { at: [1015, 420], label: [1000, 345], anchor: "end" },
+  { at: [700, 489], label: [700, 545], anchor: "middle" },
+];
+
 function TrackMap({ stations }: { stations: string[] }) {
-  const w = 1000;
-  const pts = stations.map((_, i) => {
-    const x = 60 + (i * (w - 120)) / (stations.length - 1);
-    const y = i % 2 ? 70 : 150;
-    return [x, y] as const;
-  });
-  const path = pts.map(([x, y], i) => `${i ? "L" : "M"}${x} ${y}`).join(" ");
+  const mono = { fontFamily: "var(--font-plex-mono)" };
   return (
-    <svg viewBox={`0 0 ${w} 220`} className="w-full" role="img" aria-label={`Build route: ${stations.join(", ")}`}>
-      <path d={path} fill="none" stroke="#2457ff" strokeWidth="14" strokeLinejoin="round" strokeLinecap="round" />
-      <path d={path} fill="none" stroke="#f6f4ed" strokeWidth="2" strokeDasharray="10 10" />
-      {pts.map(([x, y], i) => (
-        <g key={stations[i]}>
-          <circle cx={x} cy={y} r="13" fill="#f6f4ed" stroke="#101010" strokeWidth="4" />
-          <text x={x} y={i % 2 ? y - 28 : y + 40} textAnchor="middle" fontSize="18" fontFamily="var(--font-plex-mono)" fill="currentColor">
-            {String(i + 1).padStart(2, "0")} {stations[i].toUpperCase()}
-          </text>
-        </g>
+    <svg viewBox="0 0 1074 600" className="w-full" role="img" aria-label={`Build circuit: ${stations.join(", ")}`}>
+      {/* Track surface */}
+      {SECTORS.map((s) => (
+        <path key={s.label + "bg"} d={s.d} fill="none" stroke="#f6f4ed" strokeOpacity="0.12" strokeWidth="30" strokeLinejoin="round" strokeLinecap="round" />
       ))}
+      {SECTORS.map((s) => (
+        <path key={s.label} d={s.d} fill="none" stroke={s.color} strokeWidth="4" strokeLinejoin="round" strokeLinecap="round" />
+      ))}
+      {SECTORS.map((s) => (
+        <text key={s.label + "t"} x={s.at[0]} y={s.at[1]} fill={s.color} fontSize="18" fontWeight="600" style={mono}>
+          {s.label}
+        </text>
+      ))}
+
+      {/* Review zones (dashed, alongside the two long straights) */}
+      <path d="M 300 95 L 515 330" stroke="#2bd96b" strokeWidth="5" strokeDasharray="2 6" />
+      <path d="M 470 520 L 850 520" stroke="#2bd96b" strokeWidth="5" strokeDasharray="2 6" />
+      <g style={mono} fontSize="15" fontWeight="600">
+        <rect x="300" y="8" width="190" height="52" fill="#2bd96b" />
+        <text x="395" y="30" textAnchor="middle" fill="#101010">DESIGN REVIEW</text>
+        <text x="395" y="50" textAnchor="middle" fill="#101010">ZONE 1</text>
+        <line x1="300" y1="34" x2="232" y2="44" stroke="#2bd96b" strokeWidth="2" />
+        <rect x="860" y="530" width="190" height="52" fill="#2bd96b" />
+        <text x="955" y="552" textAnchor="middle" fill="#101010">DESIGN REVIEW</text>
+        <text x="955" y="572" textAnchor="middle" fill="#101010">ZONE 2</text>
+        <line x1="955" y1="530" x2="958" y2="487" stroke="#2bd96b" strokeWidth="2" />
+      </g>
+
+      {/* Start / finish */}
+      <g transform="translate(880 470)" aria-hidden>
+        {[0, 1, 2, 3, 4, 5].map((i) => {
+          const row = Math.floor(i / 3), col = i % 3;
+          return <rect key={i} x={col * 8} y={row * 8} width="8" height="8" fill={(row + col) % 2 ? "#101010" : "#f6f4ed"} />;
+        })}
+      </g>
+      <text x="800" y="465" fill="currentColor" fontSize="14" style={mono} opacity="0.7">«« START / FINISH</text>
+
+      {/* Turns = build phases */}
+      {stations.slice(0, TURNS.length).map((name, i) => {
+        const t = TURNS[i];
+        return (
+          <g key={name}>
+            <circle cx={t.at[0]} cy={t.at[1]} r="15" fill="#101010" stroke="#f6f4ed" strokeWidth="3" />
+            <text x={t.at[0]} y={t.at[1] + 5} textAnchor="middle" fill="#f6f4ed" fontSize="13" fontWeight="700" style={mono}>
+              {String(i + 1).padStart(2, "0")}
+            </text>
+            <text x={t.label[0]} y={t.label[1]} textAnchor={t.anchor} fill="currentColor" fontSize="17" style={mono}>
+              {name.toUpperCase()}
+            </text>
+          </g>
+        );
+      })}
+
     </svg>
   );
 }
@@ -132,7 +207,7 @@ export function CaseStudy() {
     <section id="pit-lane" aria-labelledby="pit-title" className="bg-night px-4 py-28 text-light md:px-8 md:py-36">
       <div className="mx-auto max-w-[1400px]">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-light/20 pb-4">
-          <SectionLabel n="07">{caseStudy.kicker}</SectionLabel>
+          <SectionLabel n="08">{caseStudy.kicker}</SectionLabel>
           <p className="label text-light/50">33.4255° N, 111.9400° W — TEMPE</p>
         </div>
 
@@ -227,7 +302,7 @@ export function Lab() {
   return (
     <section aria-labelledby="lab-work-title" className="px-4 py-28 md:px-8 md:py-36" onPointerMove={(e) => setPos({ x: e.clientX, y: e.clientY })}>
       <div className="mx-auto max-w-[1400px]">
-        <SectionLabel n="08">After-hours lab</SectionLabel>
+        <SectionLabel n="09">After-hours lab</SectionLabel>
         <h2 id="lab-work-title" className="mt-6 font-display text-[clamp(2.4rem,6vw,5.5rem)] font-bold leading-[0.9] tracking-[-0.04em]">
           INSOMNIAC WORK.
         </h2>

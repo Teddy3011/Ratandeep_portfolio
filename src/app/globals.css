@@ -73,6 +73,27 @@ body { overflow-x: hidden; }
 .preloader { animation: preloader-failsafe 0s 2.5s forwards; }
 @keyframes preloader-failsafe { to { visibility: hidden; } }
 
+/* Toolkit tiles: icon in ink; on hover the tile lifts and the icon takes its brand colour. */
+.tool {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 7rem;
+  padding: 14px;
+  border: 1px solid color-mix(in srgb, var(--color-ink) 14%, transparent);
+  background: color-mix(in srgb, white 45%, var(--color-paper));
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.25;
+  transition: transform 0.26s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s, border-color 0.2s;
+}
+.tool-icon { color: var(--color-ink); transition: color 0.2s, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); }
+@media (hover: hover) and (pointer: fine) {
+  .tool:hover { transform: translateY(-4px); border-color: var(--color-ink); background: white; }
+  .tool:hover .tool-icon { color: var(--brand); transform: scale(1.12) rotate(-6deg); }
+}
+
 .scribble { font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive; }
 
 @media (prefers-reduced-motion: reduce) {

@@ -3,8 +3,9 @@
 // About statement, metrics lab, and the pinned philosophy section.
 import { useRef } from "react";
 import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
-import { metrics, philosophy, site, statement } from "@/content/site";
+import { metrics, philosophy, site, statement, toolkit } from "@/content/site";
 import { AnimatedHeadline, Counter, SectionLabel, useReduce } from "./ui";
+import { ToolIcon, toolColor } from "./toolIcons";
 
 /** One phrase that brightens as the reader scrolls past it. */
 function Phrase({ text, progress, range }: { text: string; progress: MotionValue<number>; range: [number, number] }) {
@@ -142,7 +143,7 @@ export function Philosophy() {
     <section ref={ref} aria-labelledby="philosophy-title" className={`relative bg-night text-light ${pinned ? "md:h-[300vh]" : ""}`}>
       <div className={`px-4 pt-24 md:px-8 md:pt-28 ${pinned ? "md:absolute md:inset-x-0 md:top-0 md:z-10" : ""}`}>
         <div className="mx-auto max-w-[1400px]">
-          <SectionLabel n="03">Core philosophy</SectionLabel>
+          <SectionLabel n="04">Core philosophy</SectionLabel>
           <h2 id="philosophy-title" className="mt-4 font-display text-[clamp(2.4rem,7vw,6.5rem)] font-bold leading-[0.9] tracking-[-0.04em]">
             {philosophy.statement}
           </h2>
@@ -160,3 +161,39 @@ export function Philosophy() {
   );
 }
 
+
+export function Toolkit() {
+  return (
+    <section aria-labelledby="toolkit-title" className="px-4 py-24 md:px-8 md:py-32">
+      <div className="mx-auto max-w-[1400px]">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <SectionLabel n="03">Toolkit</SectionLabel>
+            <h2 id="toolkit-title" className="mt-6 font-display text-[clamp(2.4rem,6vw,5.5rem)] font-bold leading-[0.9] tracking-[-0.04em]">
+              THE TOOLKIT.
+            </h2>
+          </div>
+          <p className="label max-w-xs text-muted">From the first sketch to the last data point.</p>
+        </div>
+        <div className="mt-14 border-t-2 border-ink">
+          {toolkit.map((g) => (
+            <div key={g.title} className="grid grid-cols-1 gap-6 border-b border-ink/15 py-8 md:grid-cols-[0.32fr_1fr] md:gap-12">
+              <div>
+                <h3 className="font-display text-2xl font-bold tracking-tight">{g.title}</h3>
+                <p className="mt-2 max-w-[22em] text-sm text-muted">{g.caption}</p>
+              </div>
+              <ul className="grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-6">
+                {g.tools.map((t) => (
+                  <li key={t} className="tool" style={{ "--brand": toolColor(t) } as React.CSSProperties}>
+                    <ToolIcon name={t} />
+                    <span>{t}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

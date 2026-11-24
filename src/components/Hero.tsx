@@ -67,6 +67,16 @@ export default function Hero() {
           </div>
           <p className="label absolute -left-3 top-6 -rotate-3 bg-paper px-3 py-2 shadow-sm md:-left-10">Based in {site.location}</p>
           <p className="label absolute -right-2 bottom-24 rotate-2 bg-blue px-3 py-2 text-light">{site.availability}</p>
+          {hero.chips.map((chip, i) => (
+            <p
+              key={chip}
+              className={`label absolute px-3 py-2 ${
+                i === 0 ? "-top-3 right-3 rotate-3 bg-red text-light" : "-left-3 bottom-44 -rotate-2 bg-ink text-light md:-left-8"
+              }`}
+            >
+              {chip}
+            </p>
+          ))}
           <p className="label mt-3 flex justify-between text-muted">
             <span>Fig. 01 — the engineer</span>
             <LocalTime />
